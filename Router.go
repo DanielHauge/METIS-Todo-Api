@@ -1,15 +1,17 @@
 package main
 
-import routing "github.com/qiangxue/fasthttp-routing"
+import (
+	"github.com/valyala/fasthttprouter"
+)
 
-func CreateRouter() *routing.Router{
+func CreateRouter() *fasthttprouter.Router{
 
-	router := routing.New()
+	router := fasthttprouter.New()
 
-	router.Post("/<secret>/todos", Secure(CreateTodo))
-	router.Get("/<secret>/todos", Secure(ReadTodos))
-	router.Put("/<secret>/todos", Secure(UpdateTodo))
-	router.Delete("/<secret>/todos/<id>", Secure(DeleteTodo))
+	router.POST("/:secret/:bucket:", Secure(CreateEntry))
+	router.GET("/:secret/:bucket:", Secure(ReadEntries))
+	router.PUT("/:secret/:bucket:/:id", Secure(UpdateEntry))
+	router.DELETE("/:secret/:bucket:/:id", Secure(DeleteEntry))
 
 	return router
 }

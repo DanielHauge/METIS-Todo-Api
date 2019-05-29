@@ -13,34 +13,36 @@ func itob(v int) []byte {
 	return b
 }
 
-func Create(todo Todo)error{
-	db, err := bolt.Open("todos.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
-	if err != nil { return err }
+func Create(data interface{}, bucket string) (int,error){
+	db, err := bolt.Open("bolt.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
+	if err != nil { return 0,err }
 	defer db.Close()
-
+	var newId int
 	err = db.Update(func(tx *bolt.Tx) error {
-		bucket, fail := tx.CreateBucketIfNotExists([]byte("TodoBucket"))
+		bucket, fail := tx.CreateBucketIfNotExists([]byte(bucket))
 		if fail != nil { return fail }
 		id, fail := bucket.NextSequence()
-		todo.Id = int(id)
-		json, fail := json.Marshal(todo)
+		integerId := int(id)
+		newId = integerId
+		entry := Entry{Data:data, Id:integerId}
+		json, fail := json.Marshal(entry)
 		if fail != nil { return fail }
 		return bucket.Put(itob(int(id)), json)
 	})
 
-	return err
+	return newId, err
 }
 
-func Read()([]Todo, error){
-	db, err := bolt.Open("todos.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
+func Read(bucket string)([]Entry, error){
+	db, err := bolt.Open("bolt.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
 	if err != nil { return nil, err }
 	defer db.Close()
-	var resultList []Todo
+	var resultList []Entry
 	err = db.View(func(tx *bolt.Tx) error {
-		b := tx.Bucket([]byte("TodoBucket"))
-		if b == nil { return errors.New("Bucket didn't exist! Create a new todo")}
+		b := tx.Bucket([]byte(bucket))
+		if b == nil { return errors.New("Bucket didn't exist! Create a new entry in that bucket")}
 		err = b.ForEach(func(k, v []byte) error {
-			var todo Todo
+			var todo Entry
 			jsonError := json.Unmarshal(v, &todo)
 			if jsonError != nil {return jsonError}
 			resultList = append(resultList, todo)
@@ -51,26 +53,26 @@ func Read()([]Todo, error){
 	return resultList, err
 }
 
-func Update(todo Todo)error{
-	db, err := bolt.Open("todos.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
+func Update(entry Entry, bucket string)error{
+	db, err := bolt.Open("bolt.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
 	if err != nil { return err }
 	defer db.Close()
 	err = db.Update(func(tx *bolt.Tx) error {
-		bucket, fail := tx.CreateBucketIfNotExists([]byte("TodoBucket"))
+		bucket, fail := tx.CreateBucketIfNotExists([]byte(bucket))
 		if fail != nil { return fail }
-		json, fail := json.Marshal(todo)
+		json, fail := json.Marshal(entry)
 		if fail != nil { return fail }
-		return bucket.Put(itob(todo.Id), json)
+		return bucket.Put(itob(entry.Id), json)
 	})
 	return err
 }
 
-func Delete(id int)error{
-	db, err := bolt.Open("todos.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
+func Delete(id int, bucket string)error{
+	db, err := bolt.Open("bolt.db", 0600, &bolt.Options{Timeout: 1 * time.Second })
 	if err != nil { return err }
 	defer db.Close()
 	err = db.Update(func(tx *bolt.Tx) error {
-		bucket, fail := tx.CreateBucketIfNotExists([]byte("TodoBucket"))
+		bucket, fail := tx.CreateBucketIfNotExists([]byte(bucket))
 		if fail != nil { return fail }
 		return bucket.Delete(itob(id))
 	})

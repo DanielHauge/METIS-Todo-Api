@@ -1,77 +1,76 @@
 package main
 
 import (
-	"errors"
-	routing "github.com/qiangxue/fasthttp-routing"
 	"github.com/valyala/fasthttp"
-	"log"
+	"github.com/valyala/fasthttprouter"
 	"strconv"
 )
 
 
-func Secure(handlefunction func (context *routing.Context) error ) func(context *routing.Context) error{
-	return func(context *routing.Context) error{
-		secret := context.Param("secret")
-		context.SetContentType("application/json")
+func Secure(handlefunction fasthttprouter.Handle ) fasthttprouter.Handle{
+	return fasthttprouter.Handle(func(ctx *fasthttp.RequestCtx, ps fasthttprouter.Params){
+
+		secret := ps.ByName("secret")
+		ctx.SetContentType("application/json")
 		if secret != secretGlobal{
-			context.SetStatusCode(fasthttp.StatusUnauthorized)
-			return errors.New("Unauthorized access")
+			ctx.Error("Unauthorized access", fasthttp.StatusUnauthorized)
 		} else {
-			err := handlefunction(context)
-			if err != nil{ log.Println(err) }
-			return err
+			handlefunction(ctx, ps)
 		}
-	}
+	})
 }
 
-func CreateTodo(context *routing.Context) error{
+func CreateEntry(ctx *fasthttp.RequestCtx, ps fasthttprouter.Params){
 
-	var todo Todo
-	body := context.PostBody()
+	var data interface{}
+	body := ctx.PostBody()
 
-	err := json.Unmarshal(body, &todo)
-	if err != nil { return err }
+	err := json.Unmarshal(body, &data)
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusBadRequest) }
 
-	err = Create(todo)
-	if err != nil { return err }
 
-	context.SetStatusCode(fasthttp.StatusOK)
-	return err // will be nil
+	bucket := ps.ByName("bucket")
+	id, err := Create(data, bucket)
+
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusInternalServerError) }
+	ctx.SetBody([]byte(strconv.Itoa(id)))
+	ctx.SetContentType("text/plain")
+	ctx.SetStatusCode(fasthttp.StatusOK)
 }
 
-func ReadTodos(context *routing.Context) error{
-	todos, err := Read()
-	if err != nil { return err }
-	bytes, err := json.Marshal(todos)
-	if err != nil { return err }
-	context.SetBody(bytes)
-	context.SetStatusCode(fasthttp.StatusOK)
-	return err // will be nil
+func ReadEntries(ctx *fasthttp.RequestCtx, ps fasthttprouter.Params){
+	bucket := ps.ByName("bucket")
+	entries, err := Read(bucket)
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusInternalServerError) }
+	bytes, err := json.Marshal(entries)
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusInternalServerError) }
+	ctx.SetBody(bytes)
+	ctx.SetStatusCode(fasthttp.StatusOK)
 }
 
-func UpdateTodo(context *routing.Context) error{
+func UpdateEntry(ctx *fasthttp.RequestCtx, ps fasthttprouter.Params){
+	id, err := strconv.Atoi(ps.ByName("id"))
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusBadRequest) }
 
-	var todo Todo
-	err := json.Unmarshal(context.PostBody(), &todo)
-	if err != nil { return err }
+	var data interface{}
+	err = json.Unmarshal(ctx.PostBody(), &data)
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusBadRequest) }
 
-	err = Update(todo)
-	if err != nil { return err }
+	entry := Entry{Data:data, Id:id}
+	bucket := ps.ByName("bucket")
+	err = Update(entry, bucket)
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusInternalServerError) }
 
-	context.SetStatusCode(fasthttp.StatusOK)
-
-	return err // will be nil
+	ctx.SetStatusCode(fasthttp.StatusOK)
 }
 
-func DeleteTodo(context *routing.Context) error{
-	stringId := context.Param("id")
-	id, err := strconv.Atoi(stringId)
-	if err != nil { return err }
+func DeleteEntry(ctx *fasthttp.RequestCtx, ps fasthttprouter.Params){
+	id, err := strconv.Atoi(ps.ByName("id"))
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusBadRequest) }
 
-	err = Delete(id)
-	if err != nil { return err }
+	bucket := ps.ByName("bucket")
+	err = Delete(id, bucket)
+	if err != nil { ctx.Error(err.Error(), fasthttp.StatusInternalServerError) }
 
-	context.SetStatusCode(fasthttp.StatusOK)
-
-	return err // will be nil
+	ctx.SetStatusCode(fasthttp.StatusOK)
 }
