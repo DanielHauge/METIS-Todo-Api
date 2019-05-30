@@ -8,6 +8,7 @@ RUN go get github.com/qiangxue/fasthttp-routing
 RUN go get github.com/boltdb/bolt
 RUN go get github.com/lib/pq
 RUN go get github.com/pkg/errors
+RUN go get github.com/valyala/fasthttprouter
 
 # Copy the server code into the container
 COPY . /go
