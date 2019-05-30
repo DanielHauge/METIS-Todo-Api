@@ -1,0 +1,24 @@
+resources:
+- name: git-repo
+  type: git
+  source:
+    uri: https://github.com/DanielHauge/METIS-Todo-Api.git
+    branch: master
+
+- name: container
+  type: docker-image
+  source:
+    username: ((docker-hub-username))
+    password: ((docker-hub-password))
+    repository: ((docker-hub-username))/metis-storage
+
+jobs:
+- name: build-docker-image
+  public: true
+  serial: true
+  plan:
+  - get: git-repo
+    trigger: true
+  - put: container
+    params:
+      build: git-repo

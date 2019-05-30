@@ -74,3 +74,7 @@ func DeleteEntry(ctx *fasthttp.RequestCtx, ps fasthttprouter.Params){
 
 	ctx.SetStatusCode(fasthttp.StatusOK)
 }
+
+func HandleError(ctx *fasthttp.RequestCtx, err error){
+	ctx.Response.SetBody([]byte(err.Error()))
+}
