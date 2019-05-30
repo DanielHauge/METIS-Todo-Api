@@ -7,14 +7,16 @@ import (
 	"os"
 )
 
-
 var json = jsoniter.ConfigFastest
 var secretGlobal = os.Getenv("secret")
 var env = os.Getenv("ENV")
 
 func main() {
 
-	if env == "DEV"{
+	if _, err := os.Stat("data"); os.IsNotExist(err) {
+		os.Mkdir("data", os.ModePerm)
+	}
+	if env == "DEV" {
 		StartLocalhost()
 	} else {
 		StartProduction()
@@ -22,27 +24,24 @@ func main() {
 
 }
 
-
 func StartLocalhost() {
 	router := CreateRouter()
 
 	srs := &fasthttp.Server{
-		Handler: router.Handler,
-		ErrorHandler:HandleError,
+		Handler:      router.Handler,
+		ErrorHandler: HandleError,
 	}
 	log.Println("Server is running on localhost:443")
 	log.Fatal(srs.ListenAndServeTLS(":https", "MyCertificate.crt", "MyKey.key"))
 
 }
 
-
-
 func StartProduction() {
 	router := CreateRouter()
 
 	srs := &fasthttp.Server{
-		Handler: router.Handler,
-		ErrorHandler:HandleError,
+		Handler:      router.Handler,
+		ErrorHandler: HandleError,
 	}
 	log.Println("Server is running on localhost:443")
 	log.Fatal(srs.ListenAndServe(":http"))

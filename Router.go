@@ -4,7 +4,7 @@ import (
 	"github.com/valyala/fasthttprouter"
 )
 
-func CreateRouter() *fasthttprouter.Router{
+func CreateRouter() *fasthttprouter.Router {
 
 	router := fasthttprouter.New()
 
