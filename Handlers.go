@@ -6,17 +6,10 @@ import (
 	"strconv"
 )
 
-func Secure(handlefunction fasthttprouter.Handle) fasthttprouter.Handle {
+func Filter(handlefunction fasthttprouter.Handle) fasthttprouter.Handle {
 	return fasthttprouter.Handle(func(ctx *fasthttp.RequestCtx, ps fasthttprouter.Params) {
-
-		secret := ps.ByName("secret")
 		ctx.SetContentType("application/json")
-		if secret != secretGlobal {
-			ctx.Error("Unauthorized access", fasthttp.StatusUnauthorized)
-			return
-		} else {
-			handlefunction(ctx, ps)
-		}
+		handlefunction(ctx, ps)
 	})
 }
 

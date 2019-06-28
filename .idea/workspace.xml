@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6731f748-1efe-456b-8f9b-57435fbae83b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bolt.go" beforeDir="false" afterPath="$PROJECT_DIR$/Bolt.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/Handlers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/METIS-Todo-Api" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyCertificate.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyKey.key" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Router.go" beforeDir="false" afterPath="$PROJECT_DIR$/Router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Todo.go" beforeDir="false" afterPath="$PROJECT_DIR$/Todo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/go_build_METIS_Todo_Api_" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/go_build_METIS_Todo_Api_" beforeDir="false" afterPath="$PROJECT_DIR$/bin/go_build_METIS_Todo_Api_" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+            <state relative-caret-position="495">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="e#14#108#0" expanded="true" />
               </folding>
@@ -31,12 +32,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Entry.go">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pipeline.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Router.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#14#109#0" expanded="true" />
+                <element signature="e#14#61#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,32 +61,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Handlers.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="68" />
-              <folding>
-                <element signature="e#14#131#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Bolt.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+            <state relative-caret-position="300">
+              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
               <folding>
                 <element signature="e#14#87#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Todo.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -92,17 +105,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Todo.go" />
-        <option value="$PROJECT_DIR$/Bolt.go" />
-        <option value="$PROJECT_DIR$/Handlers.go" />
         <option value="$PROJECT_DIR$/Router.go" />
+        <option value="$PROJECT_DIR$/Combined" />
+        <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/Bolt.go" />
         <option value="$PROJECT_DIR$/Main.go" />
+        <option value="$PROJECT_DIR$/Handlers.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1932" />
+    <option name="x" value="263" />
     <option name="y" value="-9" />
-    <option name="width" value="1261" />
+    <option name="width" value="2285" />
     <option name="height" value="1402" />
   </component>
   <component name="ProjectView">
@@ -110,6 +125,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,11 +133,19 @@
               <item name="METIS-Todo-Api" type="b2602c69:ProjectViewProjectNode" />
               <item name="METIS-Todo-Api" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="METIS-Todo-Api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="METIS-Todo-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="METIS-Todo-Api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -172,6 +196,7 @@
       <working_directory value="$PROJECT_DIR$/" />
       <envs>
         <env name="secret" value="hemmelighed" />
+        <env name="ENV" value="DEV" />
       </envs>
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$/Main.go" />
@@ -195,23 +220,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="967" y="-9" width="2562" height="1428" extended-state="0" />
+    <frame x="263" y="-9" width="2285" height="1402" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26213205" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18059902" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3298077" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32924962" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39969373" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3296875" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1772983" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39868668" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32924962" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32924962" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32924962" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32890624" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -224,49 +249,76 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/todos.db" />
-    <entry file="file://$PROJECT_DIR$/Bolt.go">
+    <entry file="file://$PROJECT_DIR$/privkey.pem" />
+    <entry file="file://$PROJECT_DIR$/new.ssl.csr" />
+    <entry file="file://$PROJECT_DIR$/Combined.crt" />
+    <entry file="file://$PROJECT_DIR$/MyKey.key">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-          <folding>
-            <element signature="e#14#87#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="184">
+          <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Todo.go">
+    <entry file="file://$PROJECT_DIR$/MyCertificate.crt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="285">
+          <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todo.go" />
+    <entry file="file://$PROJECT_DIR$/Entry.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pipeline.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Router.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
-            <element signature="e#14#109#0" expanded="true" />
+            <element signature="e#14#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Handlers.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="68" />
-          <folding>
-            <element signature="e#14#131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/METIS-Todo-Api">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        <state relative-caret-position="495">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#14#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Handlers.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bolt.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+          <folding>
+            <element signature="e#14#87#0" expanded="true" />
           </folding>
         </state>
       </provider>
