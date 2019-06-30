@@ -9,7 +9,7 @@ import (
 
 const dbMode = 0600
 const dbPath = "data/bolt.db"
-const dbTimeout = 1 * time.Second
+const dbTimeout = 3 * time.Second
 
 func itob(v int) []byte {
 	b := make([]byte, 8)
